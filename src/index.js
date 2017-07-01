@@ -1,5 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/app';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { BrowserRouter , Route } from 'react-router-dom';
 
-ReactDOM.render( <App />, document.querySelector('.container'));
+ import reducers from './reducers';
+ import ListPosts from './components/list_posts';
+
+const createStoreWithMiddleware = applyMiddleware()(createStore);
+
+
+ReactDOM.render(
+  <Provider store={createStoreWithMiddleware(reducers)}>
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={ListPosts} />
+      </div>
+    </BrowserRouter>
+
+  </Provider>
+  , document.querySelector('.container'));
