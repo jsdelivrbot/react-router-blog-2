@@ -11,7 +11,7 @@ class NewPost extends Component{
           type="text"
           {...field.input}
         />
-        {field.meta.errors}
+        {field.meta.error}
       </div>
 
     );
@@ -25,29 +25,38 @@ class NewPost extends Component{
           type="text"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     );
   }
 
+  onSubmitOfForm(values){
+    console.log(values);
+  }
+
   render(){
+
+    const { handleSubmit } = this.props;
+
     return(
       <div>
-        <form>
+        <form onSubmit={handleSubmit(this.onSubmitOfForm.bind(this))}>
           <Field
             label="Title"
             name="title"
             component={this.renderInputField}
-            />
+          />
           <Field
             label="Categories"
             name="categories"
             component={this.renderInputField}
-            />
-            <Field
-              label="Post Content"
-              name="content"
-              component={this.renderContentField}
-              />
+          />
+          <Field
+            label="Post Content"
+            name="content"
+            component={this.renderContentField}
+          />
+          <button type="submit" className="btn btn-primary"> Publish </button>
 
         </form>
       </div>
