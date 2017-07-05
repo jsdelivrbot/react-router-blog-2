@@ -15,7 +15,7 @@ class NewPost extends Component{
 
     );
   }
-  
+
   renderContentField(field){
     return(
       <div className="form-group">
@@ -38,8 +38,8 @@ class NewPost extends Component{
             component={this.renderInputField}
             />
           <Field
-            label="Tags"
-            name="tags"
+            label="Categories"
+            name="categories"
             component={this.renderInputField}
             />
             <Field
@@ -54,7 +54,31 @@ class NewPost extends Component{
   }
 }
 
+// called automatically - one when user tries to submit the form
+// values is an object that contains all the values that the user has entered in the form
+function validation(values){
+  //console.log(values) -> { title: '', categories:'', content:''}
+  const errors = {};
+
+  // do the validations using {values}
+  if(!values.title || values.title.length<3){
+    errors.title="Enter a valid title!";
+  }
+  if(!values.categories){
+    errors.categories="Enter a category!";
+  }
+  if(!values.content){
+    errors.content="Enter some Content!";
+  }
+
+  // If the {errors} is empty the form can be submitted
+  // If {errors} has any properties, redux form assumes form is invalid
+  return errors;
+
+}
+
 // can have multiple forms in here
 export default reduxForm({
+  validate: validation,
   form:'PostsNewForm'
 })(NewPost);
