@@ -11,22 +11,9 @@ class NewPost extends Component{
           type="text"
           {...field.input}
         />
-        {field.meta.error}
+        {field.meta.touched ? field.meta.error : '' }
       </div>
 
-    );
-  }
-
-  renderContentField(field){
-    return(
-      <div className="form-group">
-      <label>{field.label}</label>
-        <input className="form-control"
-          type="text"
-          {...field.input}
-        />
-        {field.meta.error}
-      </div>
     );
   }
 
@@ -54,7 +41,7 @@ class NewPost extends Component{
           <Field
             label="Post Content"
             name="content"
-            component={this.renderContentField}
+            component={this.renderInputField}
           />
           <button type="submit" className="btn btn-primary"> Publish </button>
 
