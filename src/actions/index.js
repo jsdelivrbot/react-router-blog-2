@@ -17,8 +17,9 @@ export function fetchAllPosts(){
   };
 }
 
-export function createNewPost(values){
-  const promise = axios.post(requestUrl, values);
+export function createNewPost(values, callback){
+  const promise = axios.post(requestUrl, values)
+  .then(()=> callback());
   return{
     type: NEW_POST,
     payload: promise

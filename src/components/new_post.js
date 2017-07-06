@@ -27,7 +27,10 @@ class NewPost extends Component{
   }
 
   onSubmitOfForm(values){
-    this.props.createNewPost(values);
+    this.props.createNewPost(values, ()=>{
+      this.props.history.push('/');
+    });
+
   }
 
   render(){
