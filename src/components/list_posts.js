@@ -4,12 +4,12 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {fetchAllPosts} from '../actions/index';
 
-
 class ListPosts extends Component {
 
   componentDidMount(){
     this.props.fetchAllPosts();
   }
+
   renderAllPosts(){
     return _.map(this.props.allPosts, post=>{
       return(
@@ -21,6 +21,7 @@ class ListPosts extends Component {
       );
     });
   }
+  
   render(){
     return(
       <div>

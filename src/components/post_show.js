@@ -6,9 +6,8 @@ import { Link } from 'react-router-dom';
 class PostShow extends Component{
 
   componentDidMount(){
-
-      const id = this.props.match.params.id;
-      this.props.fetchPostById(id);
+    const id = this.props.match.params.id;
+    this.props.fetchPostById(id);
   }
 
   onDeleteClick() {
@@ -24,7 +23,6 @@ class PostShow extends Component{
 
     // posts[this.props.match.params.id];
     const {post} = this.props;
-
     if(!post){
       return(
         <div>
@@ -32,8 +30,6 @@ class PostShow extends Component{
         </div>
       )
     }
-
-
 
     return(
       <div>
@@ -45,12 +41,10 @@ class PostShow extends Component{
         onClick={this.onDeleteClick.bind(this)}>
         Delete Post
       </button>
-      <h3>Title : {post.title}</h3>
-      <h6>Categories : {post.categories}</h6>
-      <h6>Content : {post.content}</h6>
-
+      <h3 className="title">{post.title}</h3>
+      <h4 className="categories">Categories : {post.categories}</h4>
+      <h6 className="content">{post.content}</h6>
       </div>
-
     );
   }
 }

@@ -6,8 +6,6 @@ export default function(state={}, action){
   switch(action.type){
     case FETCH_POSTS:
       return _.mapKeys(action.payload.data, 'id');
-    // case NEW_POST:
-    //   console.log(action.payload);
     case FETCH_POST_BY_ID:
       const post = action.payload.data;
       // const newState =  { ...state,  };
@@ -15,8 +13,7 @@ export default function(state={}, action){
       // return newState;
     case DELETE_POST:
       return _.omit(state, action.payload)
-
-
+    case NEW_POST:
       // square brackets mean make a new key on this object
       return { ...state , [post.id]: post};
 
