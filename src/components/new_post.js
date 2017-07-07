@@ -30,7 +30,6 @@ class NewPost extends Component{
     this.props.createNewPost(values, ()=>{
       this.props.history.push('/');
     });
-
   }
 
   render(){
